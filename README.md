@@ -6,6 +6,8 @@ The DenseNet blocks are based on the implementation available in [torchvision](h
 The input is restricted to RGB images and has shape ![formula](https://render.githubusercontent.com/render/math?math=(N,3,H,W)).
 The output has shape ![formula](https://render.githubusercontent.com/render/math?math=(N,C_{\text{out}},H,W)), where ![formula](https://render.githubusercontent.com/render/math?math=C_{\text{out}}) is the number of output classes.
 
+If the `downsaple` option is set to False the stride in `conv0` is set to 1 and `pool0` is removed.
+
 Optionally a pretrained model can be used to initalize the encoder.
 
 ## Requirements
@@ -26,6 +28,6 @@ pretrained_encoder_uri = 'https://download.pytorch.org/models/densenet121-a639ec
 #
 
 num_output_classes = 3
-model = DenseUNet(num_output_classes, pretrained_encoder_uri)
+model = DenseUNet(num_output_classes, downsample=True, pretrained_encoder_uri=pretrained_encoder_uri)
 
 ```
